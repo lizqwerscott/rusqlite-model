@@ -11,5 +11,5 @@ edition = "2018"
 path = "lib.rs"
 
 [dependencies]
-rusqlite = "0.24"
+rusqlite = "^0.24"
 rusqlite-model-derive = { version = "0.1", path = "../rusqlite-model-derive" }
