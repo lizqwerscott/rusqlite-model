@@ -48,8 +48,9 @@ fn impl_model(name: &syn::Ident, fields: &Vec<&syn::Field>) -> TokenStream {
         match &f.ty {
             syn::Type::Path(tp) => match tp.path.get_ident() {
                 Some(ident) => match ident.to_string().as_ref() {
-                    "bool" => quote!(BOOL NOT NULL),
+                    "bool" => quote!(BOOLEAN NOT NULL),
                     "String" => quote!(TEXT NOT NULL),
+                    "integer" => quote!(INTEGER NOT NULL),
                     _ => panic!("Don't know how to map to SQL type {}", ident.to_string()),
                 },
                 None => panic!("Unsupported type path"),
