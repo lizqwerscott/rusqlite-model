@@ -69,7 +69,7 @@ fn impl_model(name: &syn::Ident, fields: &Vec<&syn::Field>) -> TokenStream {
                             #(#field_names #sql_types),*
                         )
                     ),
-                    rusqlite::NO_PARAMS,
+                    [],
                 )
             }
 
@@ -77,7 +77,7 @@ fn impl_model(name: &syn::Ident, fields: &Vec<&syn::Field>) -> TokenStream {
             conn.execute(std::stringify!(
                     DROP TABLE IF EXISTS #table_name
                 ),
-                rusqlite::NO_PARAMS,
+                [],
             )
             }
 
