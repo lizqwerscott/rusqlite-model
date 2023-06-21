@@ -111,7 +111,7 @@ fn impl_tryfrom(fields: &Vec<&syn::Field>) -> TokenStream {
         .map(|f| f.ident.as_ref().expect("expected named field"));
 
     let gen = quote! {
-        impl<'a> std::convert::TryFrom<&'a rusqlite::Row<'a>> for Transaction {
+        impl<'a> std::convert::TryFrom<&'a rusqlite::Row<'a>> for Transaction<'_> {
             type Error = rusqlite::Error;
 
             fn try_from(row: &rusqlite::Row<'_>) -> rusqlite::Result<Self> {
